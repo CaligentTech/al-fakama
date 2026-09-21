@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=block');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=block');
 
 :root {
     --primary-color: #0c2b1c;
@@ -138,12 +140,21 @@ h6 {
 }
 
 .header {
-    background: linear-gradient(135deg, #081d13 0%, var(--primary-color) 100%);
+    background: transparent;
     padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky;
+    border-bottom: 1px solid transparent;
+    position: fixed;
+    width: 100%;
     top: 0;
+    left: 0;
     z-index: 100;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+    background: linear-gradient(135deg, #081d13 0%, var(--primary-color) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
 }
 
 .header .container {
@@ -289,7 +300,7 @@ h6 {
 
 /* Components for inner pages */
 .page-header {
-    padding: 4rem 0;
+    padding: 8rem 0 4rem;
     text-align: center;
     background-color: var(--secondary-color);
     border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -1503,8 +1514,17 @@ h6 {
     max-width: 800px;
 }
 
+.hero-text-wrapper h1 {
+    font-family: 'Pirata One', cursive;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
 .hero-subtitle {
     margin-bottom: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--gold-light);
 }
 
 @media (max-width: 768px) {

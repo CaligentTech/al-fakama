@@ -27,10 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 render(); // Draw first frame immediately
             }
 
-            // Start animation when at least 30 frames are loaded to prevent massive mobile delay,
-            // or if it's the last frame (in case frames load out of order).
-            // We use a flag so it only starts once.
-            if (!hasStarted && (loadedCount > 30 || loadedCount === frameCount)) {
+            // Start animation immediately upon loading the first frame
+            if (!hasStarted && (loadedCount > 0 || loadedCount === frameCount)) {
                 hasStarted = true;
                 startAnimation();
             }
@@ -41,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function startAnimation() {
         const tl = gsap.timeline({
-            delay: 0.5 // Short pause after loading before frames start playing
+            delay: 0 // Start playing immediately
         });
 
         // 1. Animate sequence frames over 6 seconds
