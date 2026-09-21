@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Fakhama Metal Trading L.L.C. | Value In Every Metal</title>
+    <meta name="description"
+        content="Dubai-based scrap metal trading company focused on sourcing, trading and responsible handling of recyclable metal materials.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="Al Fakhama Logo"
+                        style="height: 50px; transform: scale(2.8); transform-origin: left center;">
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="services.html">Our Services</a>
+
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <a href="contact.html" class="btn btn-primary">Get a Quote &rarr;</a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Kinetic Hero Section -->
+    <section class="hero-kinetic" id="hero-kinetic">
+        <div class="hero-kinetic-sticky">
+            <canvas id="hero-sequence-canvas"></canvas>
+
+            <!-- Final Reveal Content -->
+            <div class="hero-final-reveal container">
+                <div class="hero-logo-wrapper">
+                    <img src="assets/logo.png" alt="Al Fakhama Logo" class="hero-main-logo">
+                </div>
+                <div class="hero-text-wrapper">
+                    <h1>VALUE <br><span class="text-gold">IN EVERY METAL</span></h1>
+                    <p class="hero-subtitle">Professional Scrap Metal Trading & Recycling Solutions</p>
+                    <a href="contact.html" class="btn btn-primary">GET A QUOTE &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Our Story Section -->
+    <section class="section" style="padding: 8rem 0; position: relative; overflow: hidden;">
+        <!-- Right-side background image (z-index: 1), color-matched to the image's background to remove the internal hard edge -->
+        <div style="position: absolute; top: 0; right: -20px; bottom: 0; width: calc(50% + 20px); background-color: rgb(42, 73, 47); background-image: url('assets/story_side_bg.png'); background-size: contain; background-position: right bottom; background-repeat: no-repeat; pointer-events: none; z-index: 1;"></div>
+        
+        <!-- Full-width gradient overlay to fade the left edge perfectly into the dark background -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; background: linear-gradient(to right, #09150d 0%, #09150d 50%, transparent 85%);"></div>
+        
+        <!-- Full-width gradient overlay to fade the top edge perfectly into the dark background -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, #09150d 0%, transparent 35%);"></div>
+
+        <div class="container" style="max-width: 1200px; position: relative; z-index: 3;">
+            <div class="story-content-clean" style="max-width: 65%;">
+                <h2 class="text-gold">Who we are</h2>
+
+                <p class="text-light">
+                    AL FAKHAMA METAL TRADING L.L.C is a Dubai-based scrap metal trading company focused on the
+                    sourcing, trading and responsible handling of recyclable metal materials. We work with
+                    automotive and spare-parts companies, workshops, factories, warehouses, construction companies
+                    and commercial businesses, providing professional solutions for surplus and recyclable
+                    materials.
+                </p>
+
+                <p class="text-light">
+                    Our approach is simple &mdash; reliable service, transparent communication, competitive
+                    market-based pricing and long-term business relationships. We believe scrap metal is not simply
+                    waste. It is a valuable resource that can be recovered, traded and given a new purpose.
+                </p>
+
+                <a href="contact.html" class="btn btn-primary story-btn">
+                    Get in Touch
+                    <span class="story-btn-icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials Focus -->
+    <section class="section mat-section" id="materials">
+        <div class="container">
+            <div class="mat-header">
+                <div class="mat-header-left">
+                    <h2 class="mat-title">Our Main Focus</h2>
+                    <p class="mat-sub-eyebrow">A WIDE RANGE OF SCRAP & METAL WASTE TRADING</p>
+                </div>
+            </div>
+
+            <div class="mat-category-header">
+                <h3 class="text-gold">Ferrous Metals</h3>
+            </div>
+
+            <div class="mat-grid">
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/mild steel.png" alt="Mild Steel">
+                    </div>
+                    <div class="mat-image-label">Mild Steel</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/heavy steel.png" alt="Heavy Steel">
+                    </div>
+                    <div class="mat-image-label">Heavy Steel</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/light iron.png" alt="Light Iron">
+                    </div>
+                    <div class="mat-image-label">Light Iron</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/sheet metal.png" alt="Sheet Metal">
+                    </div>
+                    <div class="mat-image-label">Sheet Metal</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/pipes.png" alt="Pipes / Sections">
+                    </div>
+                    <div class="mat-image-label">Pipes / Sections</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/Structural metal.png" alt="Structural Metal">
+                    </div>
+                    <div class="mat-image-label">Structural Metal</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/Machinary Scrap.png" alt="Machinery Scrap">
+                    </div>
+                    <div class="mat-image-label">Machinery Scrap</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/industrial scrap.png" alt="Industrial Scrap">
+                    </div>
+                    <div class="mat-image-label">Industrial Scrap</div>
+                </div>
+            </div>
+
+            <div class="mat-category-header" style="margin-top: 4rem;">
+                <h3 class="text-gold">Non-Ferrous Metals</h3>
+            </div>
+
+            <div class="mat-grid">
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/aluminium.png" alt="Aluminium">
+                    </div>
+                    <div class="mat-image-label">Aluminium</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/copper.png" alt="Copper">
+                    </div>
+                    <div class="mat-image-label">Copper</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/brass.png" alt="Brass">
+                    </div>
+                    <div class="mat-image-label">Brass</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/stainless.png" alt="Stainless Steel">
+                    </div>
+                    <div class="mat-image-label">Stainless Steel</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/zinc.png" alt="Zinc">
+                    </div>
+                    <div class="mat-image-label">Zinc</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/cables.png" alt="Cables / Wires">
+                    </div>
+                    <div class="mat-image-label">Cables / Wires</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/mixed non ferrous.png" alt="Mixed Non Ferrous">
+                    </div>
+                    <div class="mat-image-label">Mixed Non Ferrous</div>
+                </div>
+                <div class="mat-image-card">
+                    <div class="mat-image-wrapper">
+                        <img src="assets/materials/scrap.png" alt="Scrap">
+                    </div>
+                    <div class="mat-image-label">Scrap</div>
+                </div>
+            </div>
+
+            <div class="mat-bottom-bar mt-2">
+                <div class="mat-bb-left">
+                    <i class="fas fa-recycle text-gold" style="font-size: 2.5rem; margin-right: 1rem;"></i>
+                    <div>
+                        <div class="mat-eyebrow text-gold">ALSO WE ACCEPT</div>
+                        <h3 class="mb-0">Other Approved Waste Categories</h3>
+                    </div>
+                </div>
+                <div class="mat-bb-middle">
+                    <div class="mat-bb-item"><i class="fas fa-bottle-water"></i> Plastic</div>
+                    <div class="mat-bb-item"><i class="fas fa-wine-glass"></i> Glass</div>
+                    <div class="mat-bb-item"><i class="fas fa-file-alt"></i> Paper</div>
+                    <div class="mat-bb-item"><i class="fas fa-tree"></i> Wood</div>
+                </div>
+                <div class="mat-bb-right">
+                    <div class="why-card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section why-section-bg" style="padding: 0;">
+        <div class="text-center" style="padding: 6rem 1rem 3rem;">
+            <h2 class="mat-title">Why Al Fakhama</h2>
+
+        </div>
+
+        <div class="achievements-grid">
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_1.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Competitive Pricing</h4>
+                    <p>Market-based pricing based on material type, quality, quantity and current conditions.</p>
+                </div>
+            </div>
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_2.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Reliable Collection</h4>
+                    <p>Professional pickup and collection coordination according to customer requirements.</p>
+                </div>
+            </div>
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_3.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Fast & Professional</h4>
+                    <p>Clear communication and efficient coordination from quotation to collection.</p>
+                </div>
+            </div>
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_4.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Transparent Dealings</h4>
+                    <p>Clear and straightforward communication throughout material assessment, pricing and transactions.
+                    </p>
+                </div>
+            </div>
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_5.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Industrial Focus</h4>
+                    <p>Focus on regular scrap generated by factories, workshops, and industrial businesses.</p>
+                </div>
+            </div>
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_6_new.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Long-Term Partnerships</h4>
+                    <p>Our goal is to build lasting relationships rather than focusing only on one-time transactions.
+                    </p>
+                </div>
+            </div>
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_7.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Multi-Material Trading</h4>
+                    <p>Primary focus on metal, with additional trading of plastic, paper, glass and wood waste.</p>
+                </div>
+            </div>
+            <div class="achievements-card">
+                <div class="achievements-card-bg" style="background-image: url('assets/why_8.png');"></div>
+                <div class="achievements-card-content">
+                    <h4>Responsible Recycling</h4>
+                    <p>Directing materials through appropriate recycling and trading channels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section works-section">
+        <div class="container">
+            <div class="works-header">
+                <h2 class="works-title">How It <span class="text-gold">Works</span></h2>
+                <p class="works-subtitle">From your inquiry to a successful transaction, we make metal trading simple,
+                    transparent and efficient.</p>
+            </div>
+
+            <div class="works-grid">
+                <div class="works-step">
+                    <div class="works-icon"><i class="fas fa-phone-alt"></i></div>
+                    <h3>Contact</h3>
+                    <p>Send us your scrap details, photos and location.</p>
+                </div>
+                <div class="works-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="works-step">
+                    <div class="works-icon"><i class="fas fa-search"></i></div>
+                    <h3>Assess</h3>
+                    <p>We review the material type, quality and quantity.</p>
+                </div>
+                <div class="works-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="works-step">
+                    <div class="works-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Quote</h3>
+                    <p>We discuss competitive market-based pricing.</p>
+                </div>
+                <div class="works-arrow"><i class="fas fa-chevron-right"></i></div>
+                <div class="works-step">
+                    <div class="works-icon"><i class="fas fa-truck"></i></div>
+                    <h3>Collect & Trade</h3>
+                    <p>We coordinate the collection and trading process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Work With Section -->
+    <section class="section www-section">
+        <div class="container" style="max-width: 1000px;">
+            <div class="www-header">
+                <h2>WHO WE WORK WITH</h2>
+            </div>
+
+            <div class="www-list">
+                <div class="www-item">
+                    <div class="www-icon"><i class="fas fa-car-side"></i></div>
+                    <h4>AUTOMOTIVE & SPARE PARTS</h4>
+                </div>
+                <div class="www-item">
+                    <div class="www-icon"><i class="fas fa-industry"></i></div>
+                    <h4>MANUFACTURING & FACTORIES</h4>
+                </div>
+                <div class="www-item">
+                    <div class="www-icon"><i class="fas fa-warehouse"></i></div>
+                    <h4>WORKSHOPS & GARAGES</h4>
+                </div>
+                <div class="www-item">
+                    <div class="www-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h4>CONSTRUCTION COMPANIES</h4>
+                </div>
+                <div class="www-item">
+                    <div class="www-icon"><i class="fas fa-truck-loading"></i></div>
+                    <h4>WAREHOUSES & LOGISTICS</h4>
+                </div>
+                <div class="www-item">
+                    <div class="www-icon"><i class="fas fa-building"></i></div>
+                    <h4>COMMERCIAL BUSINESSES</h4>
+                </div>
+            </div>
+
+            <div class="wwb-header">
+                <h2>WHAT WE BUY</h2>
+                <h4>HAVE SCRAP? WE BUY IT.</h4>
+            </div>
+
+            <div class="wwb-card">
+                <h4 class="wwb-card-title">METAL SCRAP</h4>
+                <div class="wwb-grid">
+                    <ul class="wwb-list">
+                        <li>Industrial Metal</li>
+                        <li>Machinery Scrap</li>
+                        <li>Old & Unused Metal Components</li>
+                        <li>Structural Metal</li>
+                        <li>Pipes & Sheets</li>
+                    </ul>
+                    <ul class="wwb-list">
+                        <li>Aluminium</li>
+                        <li>Copper</li>
+                        <li>Brass</li>
+                        <li>Stainless Steel</li>
+                        <li>Cables & Wires</li>
+                    </ul>
+                </div>
+
+                <h4 class="wwb-card-title">OTHER APPROVED WASTE CATEGORIES</h4>
+                <div class="wwb-flex">
+                    <div>
+                        <div>Plastic</div>
+                        <div>Paper</div>
+                    </div>
+                    <div>
+                        <div>Glass</div>
+                        <div>Wood</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="wwb-footer-text text-light">
+                Send us your material details, photos and estimated quantity.<br>
+                Our team will review your requirements and discuss the available<br>
+                trading and collection arrangement.
+            </p>
+        </div>
+    </section>
+
+    <!-- Call to Action (Bento Style) -->
+    <section class="section cta-bento-section">
+        <!-- Background Grid -->
+        <div class="cta-bento-grid">
+            <div class="bento-col">
+                <div class="bento-img img-small" style="background-image: url('assets/why_1.png');"></div>
+                <div class="bento-img img-tall" style="background-image: url('assets/why_2.png');"></div>
+            </div>
+            <div class="bento-col">
+                <div class="bento-img img-wide" style="background-image: url('assets/why_3.png');"></div>
+                <div class="bento-img img-small" style="background-image: url('assets/why_4.png');"></div>
+            </div>
+            <div class="bento-col center-col">
+                <!-- Center is left somewhat dark for the text overlay -->
+            </div>
+            <div class="bento-col">
+                <div class="bento-img img-small" style="background-image: url('assets/why_5.png');"></div>
+                <div class="bento-img img-wide" style="background-image: url('assets/why_1.png');"></div>
+            </div>
+            <div class="bento-col">
+                <div class="bento-img img-tall" style="background-image: url('assets/why_2.png');"></div>
+                <div class="bento-img img-small" style="background-image: url('assets/why_3.png');"></div>
+            </div>
+        </div>
+
+        <!-- Vignette Overlay -->
+        <div class="cta-vignette"></div>
+
+        <!-- Foreground Content -->
+        <div class="cta-bento-content container">
+            <h2>Ready to Partner With Us?</h2>
+            <p>Let's discuss how we can create sustainable value from your recyclable materials.</p>
+
+            <div class="cta-search-bar">
+                <span class="cta-search-text">Schedule a professional scrap evaluation...</span>
+                <a href="contact.html" class="cta-search-btn">CONTACT US &nearr;</a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div style="margin-left: -30px;">
+                    <div class="logo" style="margin-top: -20px; margin-bottom: -50px;">
+                        <img src="assets/logo.png" alt="Al Fakhama Logo" style="height: 200px;">
+                    </div>
+                    <p class="text-muted mb-2" style="margin-left: 15px;">LET'S BUILD A LONG-TERM PARTNERSHIP</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul class="text-muted" style="line-height: 2;">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contact Us</h3>
+                    <ul class="footer-contact text-muted">
+                        <li>
+                            <i class="fas fa-map-marker-alt text-gold-light mt-1"></i>
+                            <span>Al Noor Building - 408, Office D32<br>Al Qusais Industrial Third,<br>Dubai, UAE</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt text-gold-light mt-1"></i>
+                            <span>+971 56 833 8487</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope text-gold-light mt-1"></i>
+                            <span>info@alfakhamametaltrading.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Al Fakhama Metal Trading L.L.C. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/hero-animation.js"></script>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/971568338487" class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+
+</html>
