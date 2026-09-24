@@ -11,6 +11,11 @@
 	--text-muted: rgba(255, 255, 255, 0.7);
 	--font-heading: "Inter", sans-serif;
 	--font-body: "Inter", sans-serif;
+
+	/* Video Box Sizes */
+	--video-width: 256px;
+	--video-height: 198px;
+	--card-padding: 12px;
 }
 
 * {
@@ -2150,7 +2155,7 @@ h6 {
 	padding: 12px;
 	width: 360px;
 	height: 180px;
-    background: var(--text-light);
+	background: var(--text-light);
 }
 
 .www-icon {
@@ -2169,7 +2174,7 @@ h6 {
 	font-size: 1.25rem;
 	font-weight: 700;
 	letter-spacing: 0.5px;
-    color: var(--primary-color);
+	color: var(--primary-color);
 }
 
 .wwb-header {
@@ -2308,4 +2313,260 @@ h6 {
 	transform: scale(1.1);
 	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
 	color: white;
+}
+
+/* Section Container */
+.process-section {
+	background-color: var(--bg-dark);
+	/* Dark green */
+	padding: 6rem 0;
+}
+
+/* Section Header */
+.section-header {
+	text-align: center;
+	margin-bottom: 24px;
+	z-index: 10;
+}
+
+.badge {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	padding: 6px 16px;
+	border-radius: 50px;
+	border: 1px solid var(--gold);
+	color: var(--gold-light);
+	background-color: var(--secondary-color);
+	margin-bottom: 12px;
+}
+
+.section-title {
+	font-size: 2.25rem;
+	font-weight: 800;
+	color: var(--text-light);
+	letter-spacing: -0.5px;
+}
+
+.section-title span {
+	color: var(--gold-light);
+}
+
+.section-subtitle {
+	color: var(--text-muted);
+	font-size: 0.875rem;
+	margin-top: 8px;
+	max-width: 500px;
+}
+
+.roadmap-wrapper {
+	position: relative;
+	width: 100%;
+	max-width: 1100px;
+	height: 1180px;
+	margin: 0 auto;
+	overflow: visible;
+}
+
+/* Static SVG Curved Line - NO ANIMATIONS */
+.roadmap-svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.roadmap-path-bg {
+	stroke: rgba(194, 155, 98, 0.25);
+	stroke-width: 6px;
+	stroke-linecap: round;
+	fill: none;
+}
+
+.roadmap-path-gold {
+	stroke: var(--gold);
+	stroke-width: 4px;
+	stroke-linecap: round;
+	fill: none;
+}
+
+/* Node Dots along the line */
+.node-dot {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	background-color: var(--gold);
+	border: 3px solid #ffffff;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+/* Static Process Cards - NO TRANSITIONS OR ANIMATIONS */
+.step-card {
+	position: absolute;
+	background: var(--secondary-color);
+	border: 1px solid rgba(194, 155, 98, 0.4);
+	border-radius: 16px;
+	padding: var(--card-padding);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+	z-index: 3;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: calc(var(--video-width) + (var(--card-padding) * 2));
+}
+
+.card-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+.icon-box {
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+	background: rgba(194, 155, 98, 0.2);
+	color: var(--gold-light);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.card-title-group {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Video Player Box with Fixed Dimensions */
+.video-player-box {
+	width: var(--video-width);
+	height: var(--video-height);
+	position: relative;
+	overflow: hidden;
+	border-radius: 10px;
+	background-size: cover;
+	background-position: center;
+	border: 1px solid rgba(230, 197, 135, 0.25);
+	background-color: #000;
+}
+
+.video-player-box video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: left;
+	display: block;
+}
+
+/* Step Absolute Offsets for Desktop Layout */
+.step-1-node {
+	left: 180px;
+	top: 100px;
+}
+.step-1-card {
+	left: 150px;
+	top: 100px;
+	transform: translate(-100%, -50%);
+}
+
+.step-2-node {
+	left: 870px;
+	top: 260px;
+}
+.step-2-card {
+	left: 870px;
+	top: 230px;
+	transform: translate(-50%, -100%);
+}
+
+.step-3-node {
+	left: 780px;
+	top: 520px;
+}
+.step-3-card {
+	left: 810px;
+	top: 520px;
+	transform: translate(0, -50%);
+}
+
+.step-4-node {
+	left: 220px;
+	top: 720px;
+}
+.step-4-card {
+	left: 190px;
+	top: 720px;
+	transform: translate(-100%, -50%);
+}
+
+.step-5-node {
+	left: 550px;
+	top: 1080px;
+}
+.step-5-card {
+	left: 550px;
+	top: 1050px;
+	transform: translate(-50%, -100%);
+}
+
+.step-6-node {
+	left: 920px;
+	top: 1080px;
+}
+.step-6-card {
+	left: 950px;
+	top: 1080px;
+	transform: translate(0, -50%);
+}
+@media (max-width: 1000px) {
+	.roadmap-svg,
+	.roadmap-path-bg,
+	.roadmap-path-gold {
+		display: none; /* Hide curve lines on mobile */
+	}
+
+	.roadmap-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 40px;
+        height: auto;
+	}
+
+	.step-card {
+		position: relative;
+	}
+
+	.step-1-card,
+		.step-1-node,
+		.step-2-card,
+		.step-2-node,
+		.step-3-card,
+		.step-3-node,
+		.step-4-card,
+		.step-4-node,
+		.step-5-card,
+		.step-5-node,
+		.step-6-card,
+		.step-6-node {
+		top: 0px;
+		left: 0px;
+		transform: translate(0, 0);
+	}
+
+	.node-dot {
+		display: none; /* Hide path node dots on mobile */
+	}
 }
