@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const perfStart = performance.now();
+    const logPerf = (msg) => console.log(`[PERF] ${(performance.now() - perfStart).toFixed(2)}ms: ${msg}`);
+    logPerf("Page/hero JS starts");
+
     const canvas = document.getElementById("hero-sequence-canvas");
     if (!canvas || typeof gsap === "undefined") return;
 
@@ -32,21 +36,37 @@ document.addEventListener("DOMContentLoaded", () => {
     // 2. Priority-load the first chunk of frames
     function loadInitialBuffer() {
         const bufferSize = Math.min(INITIAL_BUFFER, frameCount);
+        logPerf(`First frame request starts (Requesting ${bufferSize} frames)`);
         for (let i = 0; i < bufferSize; i++) {
             const img = images[i];
+            const reqStart = performance.now();
+            
             img.onload = () => {
-                initialLoadedCount++;
-                // When critical startup frames are ready, launch the animation!
-                if (initialLoadedCount === bufferSize && !hasStarted) {
-                    hasStarted = true;
-                    // Safely set native canvas dimensions
-                    if (images[0]) {
-                        canvas.width = images[0].width;
-                        canvas.height = images[0].height;
+                const fetchTime = performance.now() - reqStart;
+                logPerf(`Frame ${i} downloaded (Fetch: ${fetchTime.toFixed(2)}ms)`);
+                
+                const decodeStart = performance.now();
+                // Explicitly measure decode time
+                img.decode().then(() => {
+                    logPerf(`Frame ${i} decoded (Decode: ${(performance.now() - decodeStart).toFixed(2)}ms)`);
+                    
+                    initialLoadedCount++;
+                    // When critical startup frames are ready, launch the animation!
+                    if (initialLoadedCount === bufferSize && !hasStarted) {
+                        logPerf(`Initial buffer (${bufferSize} frames) is READY`);
+                        hasStarted = true;
+                        // Safely set native canvas dimensions
+                        if (images[0]) {
+                            canvas.width = images[0].width;
+                            canvas.height = images[0].height;
+                        }
+                        startAnimation();
+                        startBackgroundLoader(); // Kick off the rest smoothly
                     }
-                    startAnimation();
-                    startBackgroundLoader(); // Kick off the rest smoothly
-                }
+                }).catch((e) => {
+                    logPerf(`Frame ${i} decode error: ${e.message}`);
+                    initialLoadedCount++;
+                });
             };
             img.src = currentFrame(i);
         }
@@ -138,6 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Only redraw if we actually have a valid frame and it's different from what's currently on the canvas
         if (actualFrame >= 0 && actualFrame !== lastRenderedFrame) {
+            if (lastRenderedFrame === -1) {
+                logPerf(`First canvas animation frame rendered (Frame ${actualFrame})`);
+            }
             context.clearRect(0, 0, canvas.width, canvas.height);
             context.drawImage(images[actualFrame], 0, 0, canvas.width, canvas.height);
             lastRenderedFrame = actualFrame;
