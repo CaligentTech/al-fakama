@@ -46,15 +46,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 logPerf(`Frame ${i} downloaded (Fetch: ${fetchTime.toFixed(2)}ms)`);
                 
                 initialLoadedCount++;
+                
+                // TRICKLE START: Instantly draw Frame 0 so the screen isn't blank!
+                if (i === 0 && !hasStarted) {
+                     canvas.width = images[0].width;
+                     canvas.height = images[0].height;
+                     context.clearRect(0, 0, canvas.width, canvas.height);
+                     context.drawImage(images[0], 0, 0, canvas.width, canvas.height);
+                     logPerf(`Frame 0 drawn instantly! (Trickle Start)`);
+                }
+
                 // When critical startup frames are ready, launch the animation!
                 if (initialLoadedCount === bufferSize && !hasStarted) {
                     logPerf(`Initial buffer (${bufferSize} frames) is READY`);
                     hasStarted = true;
-                    // Safely set native canvas dimensions
-                    if (images[0]) {
-                        canvas.width = images[0].width;
-                        canvas.height = images[0].height;
-                    }
                     startAnimation();
                     startBackgroundLoader(); // Kick off the rest smoothly
                 }
