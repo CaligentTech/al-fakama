@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Configurable progressive loading settings
     const isMobile = window.innerWidth <= 768;
     const INITIAL_BUFFER = isMobile ? 15 : 30; // Frames to priority-load before playing
-    const CONCURRENT_LOADS = 5; // Sliding window size for background loading
+    const CONCURRENT_LOADS = 50; // Increased drastically to allow HTTP/2 multiplexing!
     const RESUME_BUFFER = 5; // Buffer ahead before resuming from a pause
     let initialLoadedCount = 0;
     let nextToLoad = 0;
@@ -45,28 +45,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 const fetchTime = performance.now() - reqStart;
                 logPerf(`Frame ${i} downloaded (Fetch: ${fetchTime.toFixed(2)}ms)`);
                 
-                const decodeStart = performance.now();
-                // Explicitly measure decode time
-                img.decode().then(() => {
-                    logPerf(`Frame ${i} decoded (Decode: ${(performance.now() - decodeStart).toFixed(2)}ms)`);
-                    
-                    initialLoadedCount++;
-                    // When critical startup frames are ready, launch the animation!
-                    if (initialLoadedCount === bufferSize && !hasStarted) {
-                        logPerf(`Initial buffer (${bufferSize} frames) is READY`);
-                        hasStarted = true;
-                        // Safely set native canvas dimensions
-                        if (images[0]) {
-                            canvas.width = images[0].width;
-                            canvas.height = images[0].height;
-                        }
-                        startAnimation();
-                        startBackgroundLoader(); // Kick off the rest smoothly
+                initialLoadedCount++;
+                // When critical startup frames are ready, launch the animation!
+                if (initialLoadedCount === bufferSize && !hasStarted) {
+                    logPerf(`Initial buffer (${bufferSize} frames) is READY`);
+                    hasStarted = true;
+                    // Safely set native canvas dimensions
+                    if (images[0]) {
+                        canvas.width = images[0].width;
+                        canvas.height = images[0].height;
                     }
-                }).catch((e) => {
-                    logPerf(`Frame ${i} decode error: ${e.message}`);
-                    initialLoadedCount++;
-                });
+                    startAnimation();
+                    startBackgroundLoader(); // Kick off the rest smoothly
+                }
             };
             img.src = currentFrame(i);
         }
