@@ -56,9 +56,14 @@
 		<!-- Kinetic Hero Section -->
 		<section class="hero-kinetic" id="hero-kinetic">
 			<div class="hero-kinetic-sticky">
-				<!-- Preload image matches canvas exactly to hide loading delay -->
+				<!-- Old Image Sequence Animation (Commented out for Video Test) -->
+				<!--
 				<img src="assets/frames/ezgif-frame-240.webp" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: brightness(0.25); transform: scale(1.1);" alt="Background" />
 				<canvas id="hero-sequence-canvas"></canvas>
+				-->
+
+				<!-- New Video Animation -->
+				<video id="hero-sequence-video" src="assets/hero-animation.mp4" autoplay muted playsinline></video>
 
 				<!-- Final Reveal Content -->
 				<div class="hero-final-reveal container">
@@ -973,7 +978,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 		<script src="js/script.js"></script>
-		<script src="js/hero-animation.js"></script>
+		<!-- <script src="js/hero-animation.js"></script> -->
 
 		<!-- Floating WhatsApp Button -->
 		<a

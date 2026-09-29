@@ -1560,7 +1560,8 @@ h6 {
 	align-items: center;
 }
 
-#hero-sequence-canvas {
+#hero-sequence-canvas,
+#hero-sequence-video {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1654,7 +1655,8 @@ h6 {
 		font-size: 1.1rem;
 	}
 
-	#hero-sequence-canvas {
+	#hero-sequence-canvas,
+	#hero-sequence-video {
 		object-position: 75% center;
 		/* Shift focus to the right side of the video on narrow screens */
 	}
