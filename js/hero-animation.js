@@ -12,10 +12,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const seq = { frame: 0 };
     let hasStarted = false;
     let lastRenderedFrame = -1;
+    let mainTimeline = null;
+    let isBuffering = false;
+    let waitingForFrame = -1;
 
     // Configurable progressive loading settings
-    const INITIAL_BUFFER = 30; // Frames to priority-load before playing
+    const isMobile = window.innerWidth <= 768;
+    const INITIAL_BUFFER = isMobile ? 15 : 30; // Frames to priority-load before playing
     const CONCURRENT_LOADS = 5; // Sliding window size for background loading
+    const RESUME_BUFFER = 5; // Buffer ahead before resuming from a pause
     let initialLoadedCount = 0;
     let nextToLoad = 0;
 
@@ -49,6 +54,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 3. Progressive/sliding background loader
+    function checkBufferAndResume() {
+        if (!isBuffering || waitingForFrame === -1) return;
+        
+        let framesToCheck = Math.min(waitingForFrame + RESUME_BUFFER, frameCount - 1);
+        let allReady = true;
+        for (let i = waitingForFrame; i <= framesToCheck; i++) {
+            if (!images[i] || !images[i].complete) {
+                allReady = false;
+                break;
+            }
+        }
+        
+        if (allReady) {
+            isBuffering = false;
+            waitingForFrame = -1;
+            if (mainTimeline) {
+                mainTimeline.play();
+            }
+        }
+    }
+
     function loadNext() {
         if (nextToLoad >= frameCount) return; // Done loading everything
         
@@ -56,6 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const img = images[index];
         
         img.onload = () => {
+            if (isBuffering) {
+                checkBufferAndResume();
+            }
             // As soon as this frame finishes, fetch the next one (sliding window)
             loadNext();
         };
@@ -74,12 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function startAnimation() {
-        const tl = gsap.timeline({
+        mainTimeline = gsap.timeline({
             delay: 0
         });
 
         // Animate sequence frames over 6 seconds
-        tl.to(seq, {
+        mainTimeline.to(seq, {
             frame: frameCount - 1,
             snap: "frame",
             ease: "none",
@@ -90,18 +119,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function render() {
         let targetFrame = Math.round(seq.frame);
+        let actualFrame = targetFrame;
 
-        // 4. Fallback rendering: If the exact target frame hasn't downloaded yet, 
-        // fallback to the most recently available frame so the canvas never goes blank.
-        while (targetFrame >= 0 && (!images[targetFrame] || !images[targetFrame].complete)) {
-            targetFrame--;
+        // 4. Frame Buffering System
+        if (!images[targetFrame] || !images[targetFrame].complete) {
+            // The exact target frame hasn't downloaded yet. Pause timeline to buffer!
+            if (mainTimeline && !isBuffering) {
+                mainTimeline.pause();
+                isBuffering = true;
+                waitingForFrame = targetFrame;
+            }
+            
+            // Fallback to the most recently available frame so the canvas never goes blank
+            while (actualFrame >= 0 && (!images[actualFrame] || !images[actualFrame].complete)) {
+                actualFrame--;
+            }
         }
 
         // Only redraw if we actually have a valid frame and it's different from what's currently on the canvas
-        if (targetFrame >= 0 && targetFrame !== lastRenderedFrame) {
+        if (actualFrame >= 0 && actualFrame !== lastRenderedFrame) {
             context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(images[targetFrame], 0, 0, canvas.width, canvas.height);
-            lastRenderedFrame = targetFrame;
+            context.drawImage(images[actualFrame], 0, 0, canvas.width, canvas.height);
+            lastRenderedFrame = actualFrame;
         }
     }
 
