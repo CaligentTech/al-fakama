@@ -61,7 +61,15 @@
 				-->
 
 				<!-- New Video Animation -->
+				<img id="hero-video-poster" src="assets/frames/ezgif-frame-240.webp" alt="Hero Background" />
 				<video id="hero-sequence-video" src="assets/hero-animation-1.mp4" autoplay muted playsinline></video>
+				<script>
+					const vid = document.getElementById('hero-sequence-video');
+					vid.addEventListener('playing', () => {
+						const poster = document.getElementById('hero-video-poster');
+						if (poster) poster.style.display = 'none';
+					}, { once: true });
+				</script>
 
 				<!-- Final Reveal Content -->
 				<div class="hero-final-reveal container">
