@@ -14,8 +14,6 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 		/>
 		<link rel="icon" type="image/webp" href="assets/logo2.webp">
-		<!-- Preload the heavy hero video to force the browser to prioritize it -->
-		<link rel="preload" as="video" href="assets/hero-animation-1.mp4" type="video/mp4" />
 	</head>
 
 	<body>
@@ -71,7 +69,12 @@
 				</div>
 
 				<!-- New Video Animation -->
-				<video id="hero-sequence-video" src="assets/hero-animation-1.mp4" autoplay muted playsinline></video>
+				<video id="hero-sequence-video" autoplay muted playsinline preload="auto">
+					<!-- For mobile devices, load the faster 4.2MB version -->
+					<source src="assets/hero-animation-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+					<!-- For desktop, load the high-res 6.5MB version -->
+					<source src="assets/hero-animation-1.mp4" type="video/mp4">
+				</video>
 				<script>
 					const heroVid = document.getElementById('hero-sequence-video');
 					heroVid.addEventListener('playing', () => {
