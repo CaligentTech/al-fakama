@@ -1725,9 +1725,13 @@ h6 {
 	}
 
 	#hero-sequence-canvas,
-	#hero-sequence-video,
-	#hero-poster-image {
+	#hero-sequence-video {
 		object-position: 87% center;
+		transform: scale(1.1);
+	}
+
+	#hero-poster-image {
+		object-position: 73% center;
 		transform: scale(1.1);
 	}
 }
