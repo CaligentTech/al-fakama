@@ -178,6 +178,12 @@ h6 {
 	padding: 0 2rem;
 }
 
+.header .btn {
+	transform: translateX(1.5rem);
+	padding: 0.6rem 1.2rem;
+	font-size: 0.85rem;
+}
+
 .logo h1 {
 	font-size: 1.8rem;
 	color: var(--gold-light);
@@ -1568,12 +1574,13 @@ h6 {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	object-position: center center;
 	/* Cover the whole screen to act as a true background */
 	z-index: 1;
 	filter: brightness(0.25);
 	/* Heavily darkened to hide artifacts in shadows */
 	transform: scale(1.1);
-	/* Uniformly scale from center to hide watermark without breaking right side */
+	/* Zoomed slightly and shifted to the right to move the tower out from under the button */
 }
 
 .hero-final-reveal {
@@ -1657,8 +1664,8 @@ h6 {
 
 	#hero-sequence-canvas,
 	#hero-sequence-video {
-		object-position: 75% center;
-		/* Shift focus to the right side of the video on narrow screens */
+		object-position: 87% center;
+		transform: scale(1.1);
 	}
 }
 
