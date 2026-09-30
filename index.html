@@ -60,8 +60,26 @@
 				<canvas id="hero-sequence-canvas"></canvas>
 				-->
 
+				<!-- Hero Video Loader -->
+				<div id="hero-loader">
+					<div class="hero-loader-inner">
+						<div class="hero-loader-ring"></div>
+						<img src="assets/logo2.webp" alt="Al Fakhama" class="hero-loader-logo" />
+					</div>
+				</div>
+
 				<!-- New Video Animation -->
 				<video id="hero-sequence-video" src="assets/hero-animation-1.mp4" autoplay muted playsinline></video>
+				<script>
+					const heroVid = document.getElementById('hero-sequence-video');
+					heroVid.addEventListener('playing', () => {
+						const loader = document.getElementById('hero-loader');
+						if (loader) {
+							loader.classList.add('hero-loader-hidden');
+							setTimeout(() => loader.remove(), 800);
+						}
+					}, { once: true });
+				</script>
 
 				<!-- Final Reveal Content -->
 				<div class="hero-final-reveal container">
