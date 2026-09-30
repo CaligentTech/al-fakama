@@ -1567,8 +1567,7 @@ h6 {
 }
 
 #hero-sequence-canvas,
-#hero-sequence-video,
-#hero-video-poster {
+#hero-sequence-video {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1664,8 +1663,7 @@ h6 {
 	}
 
 	#hero-sequence-canvas,
-	#hero-sequence-video,
-	#hero-video-poster {
+	#hero-sequence-video {
 		object-position: 87% center;
 		transform: scale(1.1);
 	}
