@@ -1581,15 +1581,58 @@ h6 {
 	/* Heavily darkened to hide artifacts in shadows */
 	transform: scale(1.1);
 	/* Zoomed slightly and shifted to the right to move the tower out from under the button */
-	opacity: 0;
-	transition: opacity 1.2s ease-in-out;
 }
 
-#hero-sequence-video.video-loaded {
+/* Hero Video Loader */
+#hero-loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	background: var(--primary-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	opacity: 1;
+	transition: opacity 0.6s ease;
 }
 
+#hero-loader.hero-loader-hidden {
+	opacity: 0;
+	pointer-events: none;
+}
 
+.hero-loader-inner {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 120px;
+	height: 120px;
+}
+
+.hero-loader-ring {
+	position: absolute;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	border: 3px solid rgba(240, 229, 195, 0.15);
+	border-top: 3px solid var(--gold-light);
+	animation: heroLoaderSpin 1s linear infinite;
+}
+
+@keyframes heroLoaderSpin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.hero-loader-logo {
+	width: 70px;
+	height: auto;
+	opacity: 0.9;
+}
 
 .hero-final-reveal {
 	position: absolute;
