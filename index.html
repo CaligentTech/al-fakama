@@ -93,15 +93,23 @@
 						}, 800);
 					}
 
-					// If the video is already cached and ready to play immediately
-					if (heroVid.readyState >= 3) {
+					// Use sessionStorage to detect if this is a repeat visit (video is cached)
+					if (sessionStorage.getItem('heroLoaded')) {
+						// Skip the 4-second loader entirely
 						hideLoader();
-						showVideo();
-					} else {
-						// Otherwise, show loader for 4 seconds, then reveal poster.
-						setTimeout(hideLoader, 4000);
 						
-						// When the video FINALLY finishes buffering, reveal it over the poster.
+						// Show the video as soon as it's ready
+						if (heroVid.readyState >= 3) {
+							showVideo();
+						} else {
+							heroVid.addEventListener('playing', showVideo, { once: true });
+							heroVid.addEventListener('canplay', showVideo, { once: true });
+						}
+					} else {
+						// First visit: Show loader for 4 seconds, then poster, then video
+						sessionStorage.setItem('heroLoaded', 'true');
+						
+						setTimeout(hideLoader, 4000);
 						heroVid.addEventListener('playing', showVideo, { once: true });
 						heroVid.addEventListener('canplay', showVideo, { once: true });
 					}
