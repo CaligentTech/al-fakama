@@ -1575,6 +1575,9 @@ h6 {
 	height: 100%;
 	object-fit: cover;
 	object-position: center center;
+	background-image: url('../assets/frames/ezgif-frame-240.webp');
+	background-size: cover;
+	background-position: center center;
 	/* Cover the whole screen to act as a true background */
 	z-index: 1;
 	filter: brightness(0.25);
@@ -1665,6 +1668,7 @@ h6 {
 	#hero-sequence-canvas,
 	#hero-sequence-video {
 		object-position: 87% center;
+		background-position: 87% center;
 		transform: scale(1.1);
 	}
 }
