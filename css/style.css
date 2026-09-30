@@ -1567,7 +1567,8 @@ h6 {
 }
 
 #hero-sequence-canvas,
-#hero-sequence-video {
+#hero-sequence-video,
+#hero-poster-image {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1581,6 +1582,16 @@ h6 {
 	/* Heavily darkened to hide artifacts in shadows */
 	transform: scale(1.1);
 	/* Zoomed slightly and shifted to the right to move the tower out from under the button */
+}
+
+#hero-sequence-video {
+	opacity: 0;
+	transition: opacity 0.8s ease;
+}
+
+#hero-poster-image {
+	opacity: 1;
+	transition: opacity 0.8s ease;
 }
 
 /* Hero Video Loader */
@@ -1714,7 +1725,8 @@ h6 {
 	}
 
 	#hero-sequence-canvas,
-	#hero-sequence-video {
+	#hero-sequence-video,
+	#hero-poster-image {
 		object-position: 87% center;
 		transform: scale(1.1);
 	}

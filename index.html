@@ -68,17 +68,43 @@
 					</div>
 				</div>
 
+				<!-- Static Poster Image (Last Frame) -->
+				<img id="hero-poster-image" src="assets/frames/ezgif-frame-240.webp" alt="Background Poster" />
+
 				<!-- New Video Animation -->
 				<video id="hero-sequence-video" src="assets/hero-animation-1.mp4" autoplay muted playsinline preload="auto"></video>
 				<script>
-					// Hardcode the loader to disappear after exactly 4 seconds
-					setTimeout(() => {
-						const loader = document.getElementById('hero-loader');
-						if (loader) {
+					const heroVid = document.getElementById('hero-sequence-video');
+					const loader = document.getElementById('hero-loader');
+					const poster = document.getElementById('hero-poster-image');
+					
+					function hideLoader() {
+						if (loader && !loader.classList.contains('hero-loader-hidden')) {
 							loader.classList.add('hero-loader-hidden');
 							setTimeout(() => loader.remove(), 800);
 						}
-					}, 4000);
+					}
+
+					function showVideo() {
+						heroVid.style.opacity = '1';
+						if (poster) poster.style.opacity = '0';
+						setTimeout(() => {
+							if (poster) poster.remove();
+						}, 800);
+					}
+
+					// If the video is already cached and ready to play immediately
+					if (heroVid.readyState >= 3) {
+						hideLoader();
+						showVideo();
+					} else {
+						// Otherwise, show loader for 4 seconds, then reveal poster.
+						setTimeout(hideLoader, 4000);
+						
+						// When the video FINALLY finishes buffering, reveal it over the poster.
+						heroVid.addEventListener('playing', showVideo, { once: true });
+						heroVid.addEventListener('canplay', showVideo, { once: true });
+					}
 				</script>
 
 				<!-- Final Reveal Content -->
